@@ -1,4 +1,6 @@
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
   return (
@@ -16,40 +18,33 @@ const Footer = () => {
             </div>
             
             {/* Contact links */}
-            <div className="flex items-center gap-4">
-              <a 
-                href="tel:9652396581"
-                className="p-3 rounded-xl bg-secondary hover:bg-secondary/80 border border-border hover:border-primary/50 transition-all duration-300 group"
-              >
-                <Phone className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/karanr3ddy" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-secondary hover:bg-secondary/80 border border-border hover:border-primary/50 transition-all duration-300 group"
-              >
-                <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </a>
-              <a 
-                href="https://github.com/karanr3ddy" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-secondary hover:bg-secondary/80 border border-border hover:border-primary/50 transition-all duration-300 group"
-              >
-                <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </a>
-              <a 
-                href="mailto:contact@karanpunnam.dev"
-                className="p-3 rounded-xl bg-secondary hover:bg-secondary/80 border border-border hover:border-primary/50 transition-all duration-300 group"
-              >
-                <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </a>
+            <div className="flex items-center gap-3">
+              <Button variant="outline" size="icon" className="rounded-xl" asChild>
+                <a href="tel:9652396581">
+                  <Phone className="w-5 h-5" />
+                </a>
+              </Button>
+              <Button variant="outline" size="icon" className="rounded-xl" asChild>
+                <a href="https://www.linkedin.com/in/karanr3ddy" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              </Button>
+              <Button variant="outline" size="icon" className="rounded-xl" asChild>
+                <a href="https://github.com/karanr3ddy" target="_blank" rel="noopener noreferrer">
+                  <Github className="w-5 h-5" />
+                </a>
+              </Button>
+              <Button variant="outline" size="icon" className="rounded-xl" asChild>
+                <a href="mailto:contact@karanpunnam.dev">
+                  <Mail className="w-5 h-5" />
+                </a>
+              </Button>
             </div>
           </div>
           
           {/* Copyright */}
-          <div className="mt-12 pt-8 border-t border-border text-center">
+          <Separator className="my-8" />
+          <div className="text-center">
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Karan Punnam. Built with React & Tailwind CSS.
             </p>

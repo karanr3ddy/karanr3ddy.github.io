@@ -1,4 +1,6 @@
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
@@ -13,10 +15,10 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
           {/* Status badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-8 animate-fade-in">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-mono text-primary">Available for opportunities</span>
-          </div>
+          <Badge variant="outline" className="px-4 py-2 mb-8 animate-fade-in border-primary/30 bg-primary/5">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse mr-2" />
+            <span className="font-mono text-primary">Available for opportunities</span>
+          </Badge>
           
           {/* Name */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
@@ -52,28 +54,36 @@ const Hero = () => {
           
           {/* Social links */}
           <div className="flex items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-            <a 
-              href="https://www.linkedin.com/in/karanr3ddy" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-4 rounded-xl bg-secondary hover:bg-secondary/80 border border-border hover:border-primary/50 transition-all duration-300 hover:glow-sm group"
+            <Button 
+              variant="outline" 
+              size="icon"
+              className="h-12 w-12 rounded-xl hover:border-primary/50 hover:glow-sm"
+              asChild
             >
-              <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
-            <a 
-              href="https://github.com/karanr3ddy" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-4 rounded-xl bg-secondary hover:bg-secondary/80 border border-border hover:border-primary/50 transition-all duration-300 hover:glow-sm group"
+              <a href="https://www.linkedin.com/in/karanr3ddy" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="icon"
+              className="h-12 w-12 rounded-xl hover:border-primary/50 hover:glow-sm"
+              asChild
             >
-              <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
-            <a 
-              href="mailto:contact@karanpunnam.dev" 
-              className="p-4 rounded-xl bg-secondary hover:bg-secondary/80 border border-border hover:border-primary/50 transition-all duration-300 hover:glow-sm group"
+              <a href="https://github.com/karanr3ddy" target="_blank" rel="noopener noreferrer">
+                <Github className="w-5 h-5" />
+              </a>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="icon"
+              className="h-12 w-12 rounded-xl hover:border-primary/50 hover:glow-sm"
+              asChild
             >
-              <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
+              <a href="mailto:contact@karanpunnam.dev">
+                <Mail className="w-5 h-5" />
+              </a>
+            </Button>
           </div>
         </div>
         

@@ -1,3 +1,5 @@
+import { Badge } from "@/components/ui/badge";
+
 const skills = [
   { name: "React.js", category: "Frontend" },
   { name: "TypeScript", category: "Language" },
@@ -32,15 +34,14 @@ const Skills = () => {
           {/* Skills grid */}
           <div className="flex flex-wrap gap-3">
             {skills.map((skill, index) => (
-              <div
+              <Badge
                 key={skill.name}
-                className="group px-5 py-3 rounded-xl bg-secondary/50 border border-border hover:border-primary/50 hover:bg-secondary transition-all duration-300 cursor-default animate-fade-in-up"
+                variant="secondary"
+                className="px-5 py-3 text-base font-medium rounded-xl border border-border hover:border-primary/50 hover:bg-secondary transition-all duration-300 cursor-default animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <span className="text-foreground font-medium group-hover:text-primary transition-colors">
-                  {skill.name}
-                </span>
-              </div>
+                {skill.name}
+              </Badge>
             ))}
           </div>
           
