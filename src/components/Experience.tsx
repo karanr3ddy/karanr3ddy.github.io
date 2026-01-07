@@ -1,4 +1,6 @@
 import { Briefcase } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const experiences = [
   {
@@ -59,32 +61,35 @@ const Experience = () => {
                 <div className="absolute left-0 md:left-8 -translate-x-1/2 w-4 h-4 rounded-full bg-background border-2 border-primary glow-sm" />
                 
                 {/* Content card */}
-                <div className="border-gradient rounded-2xl bg-card p-6 md:p-8 hover:glow-sm transition-all duration-500">
-                  {/* Period */}
-                  <span className="font-mono text-xs text-primary tracking-wider">{exp.period}</span>
-                  
-                  {/* Title & Company */}
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground mt-2">{exp.title}</h3>
-                  <div className="flex items-center gap-2 mt-1 mb-4">
-                    <Briefcase className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">{exp.company}</span>
-                  </div>
-                  
-                  {/* Description */}
-                  <p className="text-muted-foreground leading-relaxed mb-4">{exp.description}</p>
-                  
-                  {/* Highlights */}
-                  <div className="flex flex-wrap gap-2">
-                    {exp.highlights.map((highlight) => (
-                      <span 
-                        key={highlight}
-                        className="px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20"
-                      >
-                        {highlight}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <Card className="border-gradient bg-card hover:glow-sm transition-all duration-500">
+                  <CardContent className="p-6 md:p-8">
+                    {/* Period */}
+                    <span className="font-mono text-xs text-primary tracking-wider">{exp.period}</span>
+                    
+                    {/* Title & Company */}
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground mt-2">{exp.title}</h3>
+                    <div className="flex items-center gap-2 mt-1 mb-4">
+                      <Briefcase className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-muted-foreground">{exp.company}</span>
+                    </div>
+                    
+                    {/* Description */}
+                    <p className="text-muted-foreground leading-relaxed mb-4">{exp.description}</p>
+                    
+                    {/* Highlights */}
+                    <div className="flex flex-wrap gap-2">
+                      {exp.highlights.map((highlight) => (
+                        <Badge 
+                          key={highlight}
+                          variant="outline"
+                          className="font-mono text-xs bg-primary/10 text-primary border-primary/20"
+                        >
+                          {highlight}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>
