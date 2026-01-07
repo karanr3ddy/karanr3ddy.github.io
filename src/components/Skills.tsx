@@ -20,13 +20,13 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="py-24 relative">
+    <div className="py-24 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Section header */}
           <div className="mb-16">
             <span className="font-mono text-primary text-sm tracking-wider uppercase">Expertise</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-2">
+            <h2 id="skills-heading" className="text-4xl md:text-5xl font-bold mt-2">
               Skills & <span className="text-gradient">Technologies</span>
             </h2>
           </div>
@@ -59,7 +59,7 @@ const Skills = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

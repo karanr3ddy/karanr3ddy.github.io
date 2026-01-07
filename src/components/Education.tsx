@@ -3,13 +3,13 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const Education = () => {
   return (
-    <section className="py-24 relative">
+    <div className="py-24 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Section header */}
           <div className="mb-16">
             <span className="font-mono text-primary text-sm tracking-wider uppercase">Background</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-2">
+            <h2 id="education-heading" className="text-4xl md:text-5xl font-bold mt-2">
               Education & <span className="text-gradient">Certifications</span>
             </h2>
           </div>
@@ -59,7 +59,7 @@ const Education = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

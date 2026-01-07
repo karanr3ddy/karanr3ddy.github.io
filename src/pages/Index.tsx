@@ -6,11 +6,19 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background">
-      <Hero />
-      <Skills />
-      <Experience />
-      <Education />
+    <main className="min-h-screen bg-background" role="main">
+      <header>
+        <Hero />
+      </header>
+      <section id="skills" aria-labelledby="skills-heading">
+        <Skills />
+      </section>
+      <section id="experience" aria-labelledby="experience-heading">
+        <Experience />
+      </section>
+      <section id="education" aria-labelledby="education-heading">
+        <Education />
+      </section>
       <Footer />
     </main>
   );
