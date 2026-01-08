@@ -1,27 +1,47 @@
-name: CI
+# GitHub Pages deploy workflow for a Node-based static site
+# - Change BUILD_DIR if your build outputs to another folder (e.g. "public", "build", "out")
+# - Triggers on pushes to main; change the branch if your default is different
+name: Deploy to GitHub Pages
+
+permissions:
+  contents: read        # allow reading the repo
+  pages: write          # allow publishing Pages
+  id-token: write       # required for some authentication flows
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
+
+env:
+  BUILD_DIR: dist       # <-- change this to your output folder if needed
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm i
-  
-      - name: Build project
-        run: npm run build
+
+      - name: Build site
+        run: npm run build --if-present
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ${{ env.BUILD_DIR }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
