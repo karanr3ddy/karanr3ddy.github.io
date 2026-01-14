@@ -25,7 +25,8 @@ const FloatingShape = ({
   colorIndex,
   speed = 1,
   scrollY,
-  isDark
+  isDark,
+  wireframe = false
 }: { 
   position: [number, number, number];
   geometry: "box" | "octahedron" | "torus" | "icosahedron";
@@ -33,6 +34,7 @@ const FloatingShape = ({
   speed?: number;
   scrollY: number;
   isDark: boolean;
+  wireframe?: boolean;
 }) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const colors = isDark ? darkThemeColors : lightThemeColors;
@@ -68,13 +70,22 @@ const FloatingShape = ({
     <Float speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
       <mesh ref={meshRef} position={position}>
         {geometryComponent}
-        <meshStandardMaterial 
-          color={color} 
-          transparent 
-          opacity={isDark ? 0.6 : 0.4}
-          roughness={0.4}
-          metalness={0.6}
-        />
+        {wireframe ? (
+          <meshBasicMaterial 
+            color={color} 
+            wireframe 
+            transparent 
+            opacity={isDark ? 0.8 : 0.6}
+          />
+        ) : (
+          <meshStandardMaterial 
+            color={color} 
+            transparent 
+            opacity={isDark ? 0.6 : 0.4}
+            roughness={0.4}
+            metalness={0.6}
+          />
+        )}
       </mesh>
     </Float>
   );
@@ -82,14 +93,14 @@ const FloatingShape = ({
 
 const Scene = ({ scrollY, isDark }: { scrollY: number; isDark: boolean }) => {
   const shapes = useMemo(() => [
-    { position: [-4, 2, -5] as [number, number, number], geometry: "octahedron" as const, colorIndex: 0, speed: 1.2 },
-    { position: [4, 1, -6] as [number, number, number], geometry: "box" as const, colorIndex: 1, speed: 0.8 },
-    { position: [-3, -2, -4] as [number, number, number], geometry: "torus" as const, colorIndex: 2, speed: 1.5 },
-    { position: [3, -1, -5] as [number, number, number], geometry: "icosahedron" as const, colorIndex: 3, speed: 1.0 },
-    { position: [0, 3, -7] as [number, number, number], geometry: "octahedron" as const, colorIndex: 0, speed: 0.6 },
-    { position: [-5, 0, -8] as [number, number, number], geometry: "box" as const, colorIndex: 1, speed: 1.3 },
-    { position: [5, -3, -6] as [number, number, number], geometry: "torus" as const, colorIndex: 2, speed: 0.9 },
-    { position: [1, -4, -5] as [number, number, number], geometry: "icosahedron" as const, colorIndex: 3, speed: 1.1 },
+    { position: [-4, 2, -5] as [number, number, number], geometry: "octahedron" as const, colorIndex: 0, speed: 1.2, wireframe: false },
+    { position: [4, 1, -6] as [number, number, number], geometry: "box" as const, colorIndex: 1, speed: 0.8, wireframe: true },
+    { position: [-3, -2, -4] as [number, number, number], geometry: "torus" as const, colorIndex: 2, speed: 1.5, wireframe: false },
+    { position: [3, -1, -5] as [number, number, number], geometry: "icosahedron" as const, colorIndex: 3, speed: 1.0, wireframe: true },
+    { position: [0, 3, -7] as [number, number, number], geometry: "octahedron" as const, colorIndex: 0, speed: 0.6, wireframe: true },
+    { position: [-5, 0, -8] as [number, number, number], geometry: "box" as const, colorIndex: 1, speed: 1.3, wireframe: false },
+    { position: [5, -3, -6] as [number, number, number], geometry: "torus" as const, colorIndex: 2, speed: 0.9, wireframe: true },
+    { position: [1, -4, -5] as [number, number, number], geometry: "icosahedron" as const, colorIndex: 3, speed: 1.1, wireframe: false },
   ], []);
 
   return (
@@ -107,6 +118,7 @@ const Scene = ({ scrollY, isDark }: { scrollY: number; isDark: boolean }) => {
           speed={shape.speed}
           scrollY={scrollY}
           isDark={isDark}
+          wireframe={shape.wireframe}
         />
       ))}
     </>
