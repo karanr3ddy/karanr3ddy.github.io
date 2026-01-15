@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Hero = () => {
   return (
@@ -14,6 +16,14 @@ const Hero = () => {
       
       <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
+          {/* Profile Photo */}
+          <div className="mb-8 animate-fade-in">
+            <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto border-4 border-primary/20 shadow-xl ring-4 ring-primary/10">
+              <AvatarImage src={profilePhoto} alt="Karan Punnam" className="object-cover" />
+              <AvatarFallback className="text-3xl font-bold">KP</AvatarFallback>
+            </Avatar>
+          </div>
+          
           {/* Status badge */}
           <Badge variant="outline" className="px-4 py-2 mb-8 animate-fade-in border-primary/30 bg-primary/5">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse mr-2" />
